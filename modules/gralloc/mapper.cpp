@@ -49,8 +49,8 @@ static int gralloc_map(gralloc_module_t const* /*module*/,
             return -errno;
         }
         hnd->base = uintptr_t(mappedAddress) + hnd->offset;
-        //ALOGD("gralloc_map() succeeded fd=%d, off=%d, size=%d, vaddr=%p",
-        //        hnd->fd, hnd->offset, hnd->size, mappedAddress);
+        ALOGD("gralloc_map() succeeded fd=%d, off=%d, size=%d, vaddr=%p",
+               hnd->fd, hnd->offset, hnd->size, mappedAddress);
     }
     *vaddr = (void*)hnd->base;
     return 0;
