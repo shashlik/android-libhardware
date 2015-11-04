@@ -66,6 +66,9 @@ __BEGIN_DECLS
 
 #define GRALLOC_HARDWARE_GPU0 "gpu0"
 
+// SHASHLIK
+struct WaylandClient;
+
 enum {
     /* buffer is never read in software */
     GRALLOC_USAGE_SW_READ_NEVER         = 0x00000000,
@@ -363,7 +366,24 @@ typedef struct alloc_device_t {
      */
     void (*dump)(struct alloc_device_t *dev, char *buff, int buff_len);
 
-    void* reserved_proc[7];
+    // SHASHLIK
+    /*
+     * This is used to set the waylandclient instance which serves as an interface
+     * between the android system and the wayland server. Gralloc needs this to be
+     * able to serve buffers.
+     */
+    int (*setWaylandClient)(struct alloc_device_t* module,
+            WaylandClient* waylandClient);
+
+    // SHASHLIK
+    /*
+     * Get the actual buffer the buffer handle is handling...
+     */
+    void* (*getWaylandBuffer)(struct alloc_device_t* module,
+            buffer_handle_t handle);
+
+//     void* reserved_proc[7];
+    void* reserved_proc[5];
 } alloc_device_t;
 
 
