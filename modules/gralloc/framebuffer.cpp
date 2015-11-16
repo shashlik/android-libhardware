@@ -345,8 +345,8 @@ int fb_device_open(hw_module_t const* module, const char* name,
                          ? (m->info.red.offset ? HAL_PIXEL_FORMAT_BGRA_8888 : HAL_PIXEL_FORMAT_RGBX_8888)
                          : HAL_PIXEL_FORMAT_RGB_565;
             const_cast<uint32_t&>(dev->device.flags) = 0;
-            const_cast<uint32_t&>(dev->device.width) = m->info.xres;
-            const_cast<uint32_t&>(dev->device.height) = m->info.yres;
+            const_cast<uint32_t&>(dev->device.width) = 480;// m->info.xres;
+            const_cast<uint32_t&>(dev->device.height) = 640;//m->info.yres;
             const_cast<int&>(dev->device.stride) = stride;
             const_cast<int&>(dev->device.format) = format;
             const_cast<float&>(dev->device.xdpi) = m->xdpi;
