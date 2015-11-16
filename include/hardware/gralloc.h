@@ -67,7 +67,9 @@ __BEGIN_DECLS
 #define GRALLOC_HARDWARE_GPU0 "gpu0"
 
 // SHASHLIK
+namespace android {
 struct WaylandClient;
+}
 
 enum {
     /* buffer is never read in software */
@@ -373,7 +375,7 @@ typedef struct alloc_device_t {
      * able to serve buffers.
      */
     int (*setWaylandClient)(struct alloc_device_t* module,
-            WaylandClient* waylandClient);
+            android::WaylandClient* waylandClient);
 
     // SHASHLIK
     /*
